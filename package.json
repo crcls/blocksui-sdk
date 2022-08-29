@@ -1,5 +1,5 @@
 {
-  "name": "blocksui-sdk",
+  "name": "@crcls/blocksui-sdk",
   "version": "0.0.1",
   "description": "Blocks UI SDK - Used to build dApps with the Blocks UI Protocol",
   "main": "./dist/index.js",
@@ -13,9 +13,7 @@
     "lint:fix": "eslint ./src --fix",
     "type:check": "tsc --noEmit"
   },
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/crcls/blocksui-sdk.git"
