@@ -1,0 +1,19 @@
+{
+  "name": "blocksui-sdk",
+  "version": "0.0.1",
+  "description": "Blocks UI SDK - Used to build dApps with the Blocks UI Protocol",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/crcls/blocksui-sdk.git"
+  },
+  "author": "CRCLS Networks, Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crcls/blocksui-sdk/issues"
+  },
+  "homepage": "https://github.com/crcls/blocksui-sdk#readme"
+}
