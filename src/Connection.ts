@@ -52,8 +52,8 @@ class Connection {
             if (hooks[name].constructor.name === 'AsyncFunction') {
               dict[`${compId}:${name}`] = hooks[name]
             } else {
-              // @ts-ignore
               dict[`${compId}:${name}`] = async function () {
+                // @ts-ignore
                 return hooks[name](...arguments)
               }
             }
