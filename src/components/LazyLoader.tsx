@@ -6,32 +6,33 @@ import React, {
   forwardRef,
   lazy,
   useState,
-  useEffect
+  useEffect,
 } from 'react'
 
 interface Props {
   blocksHost: string
   children?: ReactNode
-  deps: { [key:string]: any }
+  deps: { [key: string]: any }
   fetchOptions?: (options: Record<string, any>) => void
-  props: { [key:string]: any }
-  type: string,
+  props: { [key: string]: any }
+  type: string
 }
 
-const LazyLoader: ForwardRefRenderFunction<HTMLElement, Props> = ({
-  blocksHost,
-  children,
-  deps,
-  props,
-  type
-}, ref) => {
-  const [Component, setComponent] = useState<LazyExoticComponent<ComponentType<any>> | null>(null)
+const LazyLoader: ForwardRefRenderFunction<HTMLElement, Props> = (
+  { blocksHost, children, deps, props, type },
+  ref
+) => {
+  const [Component, setComponent] = useState<LazyExoticComponent<
+    ComponentType<any>
+  > | null>(null)
 
   useEffect(() => {
     if (Component === null) {
-      const Comp = lazy(() => (
-        import(`${blocksHost}/assets/blocks/${type}.js`).then((mod) => mod.default(React, deps))
-      ))
+      const Comp = lazy(() =>
+        import(
+          /* webpackIgnore: true */ `${blocksHost}/assets/blocks/${type}.js`
+        ).then((mod) => mod.default(React, deps))
+      )
       setComponent(Comp)
     }
   }, [Component, type])

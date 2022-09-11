@@ -1,10 +1,10 @@
 {
   "name": "@crcls/blocksui-sdk",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Blocks UI SDK - Used to build dApps with the Blocks UI Protocol",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types.d.ts",
   "type": "module",
   "scripts": {
     "build": "NODE_ENV=production node ./scripts/build.mjs",
