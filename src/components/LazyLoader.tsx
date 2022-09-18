@@ -9,6 +9,8 @@ import React, {
   useEffect,
 } from 'react'
 
+import { loadPrimitive } from '../Primitive'
+
 interface Props {
   blocksHost: string
   children?: ReactNode
@@ -28,18 +30,19 @@ const LazyLoader: ForwardRefRenderFunction<HTMLElement, Props> = (
 
   useEffect(() => {
     if (Component === null) {
-      const Comp = lazy(() =>
-        import(
-          /* webpackIgnore: true */ `${blocksHost}/assets/blocks/${type}.js`
-        ).then((mod) => mod.default(React, deps))
-      )
-      setComponent(Comp)
+      loadPrimitive(type).then((primitive) => {
+        const Comp = lazy(() =>
+          import(/* webpackIgnore: true */ primitive.dataUrl).then((mod) => {
+            return mod.default(React, deps)
+          })
+        )
+        setComponent(Comp)
+      })
     }
-  }, [Component, type])
+  }, [type])
 
   if (Component === null) {
-    const TempComp = lazy(() => new Promise(() => {}))
-    return <TempComp />
+    return <p>Loading</p>
   }
 
   return (

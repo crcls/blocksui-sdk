@@ -8,8 +8,8 @@ import html from './html.mjs'
 import types from './types.mjs'
 
 appConfig.entryPoints = ['./test/app.tsx']
-appConfig.inject = ['./scripts/react-shim.mjs']
 appConfig.format = 'iife'
+appConfig.bundle = true
 
 const proxyServe = async (servedir, listen) => {
   const { host, port } = await serve({ servedir }, appConfig).catch((error) => {
