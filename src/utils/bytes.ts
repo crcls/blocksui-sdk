@@ -63,10 +63,11 @@ export async function streamToArrayBuffer(
 ): Promise<Uint8Array> {
   let result = new Uint8Array(0)
   const reader = stream.getReader()
+
+  // eslint-disable-next-line no-constant-condition
   while (true) {
-    // eslint-disable-line no-constant-condition
     const { done, value } = await reader.read()
-    if (done) {
+    if (done || value === undefined) {
       break
     }
 
