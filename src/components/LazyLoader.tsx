@@ -1,12 +1,8 @@
 import React, {
-  ComponentType,
   ForwardRefRenderFunction,
-  LazyExoticComponent,
   ReactNode,
   forwardRef,
-  lazy,
   useState,
-  useEffect,
 } from 'react'
 
 import { loadPrimitive } from '../Primitive'
@@ -24,32 +20,19 @@ const LazyLoader: ForwardRefRenderFunction<HTMLElement, Props> = (
   { blocksHost, children, deps, props, type },
   ref
 ) => {
-  const [Component, setComponent] = useState<LazyExoticComponent<
-    ComponentType<any>
-  > | null>(null)
+  const [primitive] = useState(loadPrimitive(type, deps))
 
-  useEffect(() => {
-    if (Component === null) {
-      loadPrimitive(type).then((primitive) => {
-        const Comp = lazy(() =>
-          import(/* webpackIgnore: true */ primitive.dataUrl).then((mod) => {
-            return mod.default(React, deps)
-          })
-        )
-        setComponent(Comp)
-      })
-    }
-  }, [type])
-
-  if (Component === null) {
-    return <p>Loading</p>
+  if (primitive.Component === undefined) {
+    throw new Promise<void>((resolve, reject) => {
+      primitive.Component === undefined ? reject() : resolve()
+    })
   }
 
   return (
     // @ts-ignore
-    <Component ref={ref} host={blocksHost} {...props}>
+    <primitive.Component ref={ref} host={blocksHost} {...props}>
       {children}
-    </Component>
+    </primitive.Component>
   )
 }
 

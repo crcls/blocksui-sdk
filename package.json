@@ -1,6 +1,6 @@
 {
   "name": "@crcls/blocksui-sdk",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Blocks UI SDK - Used to build dApps with the Blocks UI Protocol",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
