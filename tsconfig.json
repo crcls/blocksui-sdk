@@ -12,7 +12,7 @@
     "declaration": true,
     "declarationMap": true,
     "target": "es2020",
-    "module": "CommonJS",
+    "module": "es2020",
     "esModuleInterop": true,
     "outDir": "./dist",
     "lib": ["esnext", "es2015", "esnext.asynciterable", "dom"],
