@@ -17,7 +17,7 @@ import {
   State,
   UpdateStateFunc,
   UpdateStateGenFunc
-} from '../types'
+} from '../types.js'
 
 export const setState = (
   path: string,

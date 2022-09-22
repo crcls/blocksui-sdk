@@ -1,7 +1,7 @@
 import React, { ComponentType } from 'react'
 
-import { base64EncArr, streamToArrayBuffer } from './utils/bytes'
-import { resolver } from './utils/async'
+import { base64EncArr, streamToArrayBuffer } from './utils/bytes.js'
+import { resolver } from './utils/async.js'
 
 // const ENDPOINT = 'http://localhost:8081'
 const ENDPOINT = 'https://blocksui.io'

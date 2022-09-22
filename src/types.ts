@@ -1,6 +1,6 @@
 import { RefObject } from 'react'
 
-import Connection from './Connection'
+import Connection from './Connection.js'
 
 // Props receive a tuple with one of two possible
 // configurations. The first represents the basic
@@ -12,9 +12,9 @@ import Connection from './Connection'
 // tree to pass state values to another component
 // in the tree.
 export type PropConfig = ['value', any] | [string, string]
-export type PropsConfig = { [key:string]: PropConfig | undefined }
+export type PropsConfig = { [key: string]: PropConfig | undefined }
 
-export type NodePathMap = { [key:string]: string }
+export type NodePathMap = { [key: string]: string }
 
 export interface ChildConfig {
   // Applied to the rendered component
@@ -27,7 +27,7 @@ export interface ChildConfig {
   connections?: ConnectionConfig[]
 
   // Dependencies to pass into the block
-  deps?: { [key:string]: any }
+  deps?: { [key: string]: any }
 
   // The ID of the block to render.
   // Used in connections.
@@ -40,7 +40,7 @@ export interface ChildConfig {
   ref?: RefObject<any>
 
   // initial state
-  state?: { [key:string]: any }
+  state?: { [key: string]: any }
 
   // Which component to render
   type: string
@@ -67,17 +67,15 @@ export interface ResetStateAction {
   state: State
 }
 
-export type ActionType =
-  | SetStateAction
-  | ResetStateAction
+export type ActionType = SetStateAction | ResetStateAction
 
 export type StateNode = {
-  [key: string]: any,
+  [key: string]: any
   children: State
 }
 
 export type State = (StateNode | null)[]
-export type Dispatcher = (action: ActionType) => void;
+export type Dispatcher = (action: ActionType) => void
 export type UpdateStateGenFunc = (path: string) => UpdateStateFunc
 export type UpdateStateFunc = (key: string, value: any) => void
 export type GetStateFunc = (path: string) => StateNode
@@ -97,11 +95,11 @@ export interface IBlockContext {
 
 // Connections
 
-export type ActionHookMap = { [key:string]: PromiseDict }
+export type ActionHookMap = { [key: string]: PromiseDict }
 
 export type ConnectionConfig = {
   // The action that triggers the hooks
-  action: string,
+  action: string
 
   // A dictionary with component ids as the key
   // and a list of hooks this action should
@@ -109,14 +107,14 @@ export type ConnectionConfig = {
   hooks: HookDict
 }
 
-export type ConnectionDict = { [key:string]: Connection }
+export type ConnectionDict = { [key: string]: Connection }
 
 // Each component in the tree will receive a connection
 // map that instructs which connections to register the
 // hooks with and which connection to use to wrap the
 // actions. The string value is a connection ID.
 export type ConnectionMap = {
-  hooks: Set<string>,
+  hooks: Set<string>
   owns: string
 }
 
@@ -126,10 +124,12 @@ export interface ConnectedConfig extends ChildConfig {
 }
 
 export type ConnectedNode = string | ConnectedConfig
-export type MethodCall = (args: { [key:string]: any }) => any
+export type MethodCall = (args: { [key: string]: any }) => any
 export type MethodDict = { [key: string]: MethodCall }
-export type PromiseDict = { [key:string]: (args: { [key:string]: any }) => Promise<any> }
-export type HookDict = { [key:string]: string[] }
+export type PromiseDict = {
+  [key: string]: (args: { [key: string]: any }) => Promise<any>
+}
+export type HookDict = { [key: string]: string[] }
 
 export interface ConnectionResult {
   connectedConfig: ConnectedNode[]

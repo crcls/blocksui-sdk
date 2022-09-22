@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react'
 
-import { loadPrimitive } from '../Primitive'
+import { loadPrimitive } from '../Primitive.js'
 
 interface Props {
   blocksHost: string

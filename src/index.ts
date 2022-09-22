@@ -1,5 +1,5 @@
-export { default as BlockContainer } from "./components/BlockContainer";
+export { default as BlockContainer } from './components/BlockContainer.js'
 
-export * from "./utils/props";
+export * from './utils/props.js'
 
-export { default as LazyLoader } from "./components/LazyLoader";
+export { default as LazyLoader } from './components/LazyLoader.js'

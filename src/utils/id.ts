@@ -3,7 +3,7 @@ import { customAlphabet } from 'nanoid'
 import {
   BlockConfig,
   ChildConfig
-} from '../types'
+} from '../types.js'
 
 export const createId = customAlphabet('1234567890abcdef', 10)
 

@@ -1,5 +1,5 @@
-import { hasProp } from './utils/object'
-import { createId } from './utils/id'
+import { hasProp } from './utils/object.js'
+import { createId } from './utils/id.js'
 
 import {
   ActionHookMap,
@@ -13,7 +13,7 @@ import {
   MethodDict,
   NodePathMap,
   PromiseDict,
-} from './types'
+} from './types.js'
 
 /**
  * The idea behind this class is that each component in the
